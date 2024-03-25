@@ -8,7 +8,11 @@ import org.junit.Test;
 import Core.BaseSeleniumTest;
 import PAGES.MainPage;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
+//@RunWith(Suite.class)
+//@Suite.SuiteClasses({MITest.class})
 public class MITest extends BaseSeleniumTest {
 
     @DisplayName("Prelucrare Datelor Checkbox Requirement")
@@ -69,7 +73,25 @@ public class MITest extends BaseSeleniumTest {
         try {
             mainPage.checkBoxSiteConditionsChecks(username, phonenumber, amount, term);
 
-            Helpers.wait(7);
+            Helpers.wait(4);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @DisplayName("Both Checkbox Checked")
+    @Test
+    public void bothCheckBoxChecked() throws InterruptedException {
+        MainPage mainPage = new MainPage();
+
+        String username = ConfigProvider.USER_NAME_SURNAME_4;
+        String phonenumber = ConfigProvider.PHONE_NUMBER_4;
+        int amount = ConfigProvider.NEEDED_SUM_4;
+        int term = ConfigProvider.PAYMENT_TERM_4;
+        try {
+            mainPage.checkBoxSiteConditionsChecks(username, phonenumber, amount, term);
+
+            Helpers.wait(4);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

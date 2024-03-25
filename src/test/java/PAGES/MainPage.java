@@ -69,14 +69,6 @@ public class MainPage extends BaseSeleniumPage {
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
-
-
-
-
-
-
-
     public MainPage() throws InterruptedException {
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
@@ -112,16 +104,15 @@ public class MainPage extends BaseSeleniumPage {
         userName.sendKeys(username);
         phoneNumber.sendKeys(phoneNumberValue);
         creditPurpose.click();
-        lessTan20K.click();
+        carOrder.click();
         currency.click();
         currencyMLD.click();
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
-        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
-        js.executeScript((emptyTermIninput));
         creaditAmonut.sendKeys(String.valueOf(amount));
+        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
+        js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
-
         Helpers.wait(1);
         String clickCheckBox1 = "let elem = document.evaluate(\"//*[@id='tab-1']/div[5]/label[1]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem.click();";
         js.executeScript(clickCheckBox1);
@@ -172,7 +163,7 @@ public class MainPage extends BaseSeleniumPage {
         Helpers.wait(2);
         creditPurpose.click();
         Helpers.wait(2);
-        lessTan20K.click();
+        moreThan50K.click();
         Helpers.wait(2);
         currency.click();
         Helpers.wait(2);
@@ -182,15 +173,15 @@ public class MainPage extends BaseSeleniumPage {
 
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
-        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
-        js.executeScript((emptyTermIninput));
         creaditAmonut.sendKeys(String.valueOf(amount));
+        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
+        js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
 
         Helpers.wait(1);
-        String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
-        js.executeScript(clickCheckBox2);
-        Helpers.wait(1);
+//        String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
+//        js.executeScript(clickCheckBox2);
+//        Helpers.wait(1);
         calculateBtn.click();
 
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
@@ -236,7 +227,7 @@ public class MainPage extends BaseSeleniumPage {
         Helpers.wait(2);
         creditPurpose.click();
         Helpers.wait(2);
-        lessTan20K.click();
+        appartmentNeeds.click();
         Helpers.wait(2);
         currency.click();
         Helpers.wait(2);
@@ -246,9 +237,9 @@ public class MainPage extends BaseSeleniumPage {
 
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
-        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
-        js.executeScript((emptyTermIninput));
         creaditAmonut.sendKeys(String.valueOf(amount));
+        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
+        js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
 
         Helpers.wait(1);
@@ -268,5 +259,35 @@ public class MainPage extends BaseSeleniumPage {
         System.out.printf("MainBlock = %s", mainBlock);
         System.out.printf("calculateBlock = %s", calculateBlock);
 
+    }
+    public void checkBoxBothChecked(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
+        userName.sendKeys(username);
+        phoneNumber.sendKeys(phoneNumberValue);
+        creditPurpose.click();
+        carOrder.click();
+        currency.click();
+        currencyMLD.click();
+        String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
+        js.executeScript(emptyEmountInput);
+        creaditAmonut.sendKeys(String.valueOf(amount));
+        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
+        js.executeScript((emptyTermIninput));
+        creaditTerm.sendKeys(String.valueOf(term));
+        Helpers.wait(1);
+        String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
+        js.executeScript(clickCheckBox2);
+        Helpers.wait(1);
+        calculateBtn.click();
+
+        String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
+        String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
+
+
+        if (calculateBlock.equals("true") && mainBlock.equals("false")) {
+            Assert.fail("Personal Data Processing check box should be checked!");
+        }
+
+        System.out.printf("MainBlock = %s", mainBlock);
+        System.out.printf("calculateBlock = %s", calculateBlock);
     }
 }
