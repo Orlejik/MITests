@@ -100,13 +100,16 @@ public class MainPage extends BaseSeleniumPage {
      * @throws InterruptedException
      */
 
-    public void checkBoxUserDataChecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
+    public void checkBoxUserDataUnchecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
         phoneNumber.sendKeys(phoneNumberValue);
         creditPurpose.click();
+        Helpers.wait(1);
         carOrder.click();
         currency.click();
+        Helpers.wait(1);
         currencyMLD.click();
+
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
         creaditAmonut.sendKeys(String.valueOf(amount));
@@ -130,8 +133,8 @@ public class MainPage extends BaseSeleniumPage {
             Assert.fail("Personal Data Processing check box should be checked!");
         }
 
-        System.out.printf("MainBlock = %s", mainBlock);
-        System.out.printf("calculateBlock = %s", calculateBlock);
+        System.out.printf("MainBlock = %s\n", mainBlock);
+        System.out.printf("calculateBlock = %s\n", calculateBlock);
     }
 
     /***
@@ -156,32 +159,27 @@ public class MainPage extends BaseSeleniumPage {
      * @throws InterruptedException
      */
 
-    public void checkBoxSiteConditionsChecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
+    public void checkBoxSiteConditionsUnchecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
-        Helpers.wait(2);
         phoneNumber.sendKeys(phoneNumberValue);
-        Helpers.wait(2);
         creditPurpose.click();
-        Helpers.wait(2);
+        Helpers.wait(1);
         moreThan50K.click();
-        Helpers.wait(2);
         currency.click();
-        Helpers.wait(2);
+        Helpers.wait(1);
         currencyMLD.click();
         creaditAmonut.sendKeys(String.valueOf(amount));
         creaditTerm.sendKeys(String.valueOf(term));
 
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
+        Helpers.wait(2);
         creaditAmonut.sendKeys(String.valueOf(amount));
         String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
         js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
 
         Helpers.wait(1);
-//        String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
-//        js.executeScript(clickCheckBox2);
-//        Helpers.wait(1);
         calculateBtn.click();
 
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
@@ -189,11 +187,11 @@ public class MainPage extends BaseSeleniumPage {
 
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
-            Assert.fail("Personal Data Processing check box should be checked!");
+            Assert.fail("Applying WebSite Conditions check box should be checked!");
         }
 
-        System.out.printf("MainBlock = %s", mainBlock);
-        System.out.printf("calculateBlock = %s", calculateBlock);
+        System.out.printf("MainBlock = %s\n", mainBlock);
+        System.out.printf("calculateBlock = %s\n", calculateBlock);
     }
 
 
@@ -220,17 +218,15 @@ public class MainPage extends BaseSeleniumPage {
      */
 
 
-    public void checkBoxBothChecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
+    public void checkBoxBothUnchecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
-        Helpers.wait(2);
         phoneNumber.sendKeys(phoneNumberValue);
-        Helpers.wait(2);
+        Helpers.wait(1);
         creditPurpose.click();
-        Helpers.wait(2);
+        Helpers.wait(1);
         appartmentNeeds.click();
-        Helpers.wait(2);
         currency.click();
-        Helpers.wait(2);
+        Helpers.wait(1);
         currencyMLD.click();
         creaditAmonut.sendKeys(String.valueOf(amount));
         creaditTerm.sendKeys(String.valueOf(term));
@@ -253,25 +249,29 @@ public class MainPage extends BaseSeleniumPage {
 
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
-            Assert.fail("Personal Data Processing check box should be checked!");
+            Assert.fail("Both check boxes should be checked!");
         }
 
-        System.out.printf("MainBlock = %s", mainBlock);
-        System.out.printf("calculateBlock = %s", calculateBlock);
+        System.out.printf("MainBlock = %s \n", mainBlock);
+        System.out.printf("calculateBlock = %s \n", calculateBlock);
 
     }
     public void checkBoxBothChecked(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
         phoneNumber.sendKeys(phoneNumberValue);
         creditPurpose.click();
+        Helpers.wait(1);
         carOrder.click();
         currency.click();
+        Helpers.wait(1);
         currencyMLD.click();
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
+        Helpers.wait(2);
         creaditAmonut.sendKeys(String.valueOf(amount));
         String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
         js.executeScript((emptyTermIninput));
+        Helpers.wait(2);
         creaditTerm.sendKeys(String.valueOf(term));
         Helpers.wait(1);
         String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
@@ -284,10 +284,10 @@ public class MainPage extends BaseSeleniumPage {
 
 
         if (calculateBlock.equals("true") && mainBlock.equals("false")) {
-            Assert.fail("Personal Data Processing check box should be checked!");
+            Assert.fail("The website should pass to the next step if both checkboxes are checked");
         }
 
-        System.out.printf("MainBlock = %s", mainBlock);
-        System.out.printf("calculateBlock = %s", calculateBlock);
+        System.out.printf("MainBlock = %s \n", mainBlock);
+        System.out.printf("calculateBlock = %s \n", calculateBlock);
     }
 }

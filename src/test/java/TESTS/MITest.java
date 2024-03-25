@@ -17,7 +17,7 @@ public class MITest extends BaseSeleniumTest {
 
     @DisplayName("Prelucrare Datelor Checkbox Requirement")
     @Test
-    public void dataCheckBox() throws InterruptedException {
+    public void dataCheckBoxUncehcked() throws InterruptedException {
         MainPage mainPage = new MainPage();
 
         String username = ConfigProvider.USER_NAME_SURNAME_1;
@@ -25,9 +25,8 @@ public class MITest extends BaseSeleniumTest {
         int amount = ConfigProvider.NEEDED_SUM_1;
         int term = ConfigProvider.PAYMENT_TERM_1;
         try {
-            mainPage.checkBoxUserDataChecks(username, phonenumber, amount, term);
-
-            Helpers.wait(3);
+            mainPage.checkBoxUserDataUnchecks(username, phonenumber, amount, term);
+            Helpers.wait(2);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -37,7 +36,7 @@ public class MITest extends BaseSeleniumTest {
 
     @DisplayName("Site Conditions Checkbox Requirement")
     @Test
-    public void conditionsCheckBox() throws InterruptedException {
+    public void conditionsCheckBoxUnchecked() throws InterruptedException {
         MainPage mainPage = new MainPage();
 
         String username = ConfigProvider.USER_NAME_SURNAME_2;
@@ -45,9 +44,8 @@ public class MITest extends BaseSeleniumTest {
         int amount = ConfigProvider.NEEDED_SUM_2;
         int term = ConfigProvider.PAYMENT_TERM_2;
         try {
-            mainPage.checkBoxSiteConditionsChecks(username, phonenumber, amount, term);
-
-            Helpers.wait(3);
+            mainPage.checkBoxSiteConditionsUnchecks(username, phonenumber, amount, term);
+            Helpers.wait(2);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +61,7 @@ public class MITest extends BaseSeleniumTest {
 
     @DisplayName("Both Checkbox Requirement")
     @Test
-    public void bothCheckBox() throws InterruptedException {
+    public void bothCheckBoxUnchecked() throws InterruptedException {
         MainPage mainPage = new MainPage();
 
         String username = ConfigProvider.USER_NAME_SURNAME_3;
@@ -71,9 +69,8 @@ public class MITest extends BaseSeleniumTest {
         int amount = ConfigProvider.NEEDED_SUM_3;
         int term = ConfigProvider.PAYMENT_TERM_3;
         try {
-            mainPage.checkBoxSiteConditionsChecks(username, phonenumber, amount, term);
-
-            Helpers.wait(4);
+            mainPage.checkBoxBothUnchecks(username, phonenumber, amount, term);
+            Helpers.wait(2);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -89,9 +86,8 @@ public class MITest extends BaseSeleniumTest {
         int amount = ConfigProvider.NEEDED_SUM_4;
         int term = ConfigProvider.PAYMENT_TERM_4;
         try {
-            mainPage.checkBoxSiteConditionsChecks(username, phonenumber, amount, term);
-
-            Helpers.wait(4);
+            mainPage.checkBoxBothChecked(username, phonenumber, amount, term);
+            Helpers.wait(2);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
