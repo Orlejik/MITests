@@ -69,6 +69,14 @@ public class MainPage extends BaseSeleniumPage {
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
+
+
+
+
+
+
+
+
     public MainPage() throws InterruptedException {
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
@@ -91,7 +99,7 @@ public class MainPage extends BaseSeleniumPage {
      *                         8. We uncheck the checkbox "Applied personal data processing"
      *                         9. We check the checkbox "WebSite conditions"
      *                        10. We press "Calculate button"
-     * The website should not pass to next step and paint the empty inputs (all types) by red color.
+     * The website should not pass to next step and highlight the empty inputs (all types) by red color.
      *
      * @param username
      * @param phoneNumberValue
@@ -145,8 +153,8 @@ public class MainPage extends BaseSeleniumPage {
      *                         5. Radiobutton "Personal needs" is checked
      *                         6. we fill the amount
      *                         7. We fill the term with credit
-     *                         8. We uncheck the checkbox "Applied personal data processing"
-     *                         9. We check the checkbox "WebSite conditions"
+     *                         8. We leave the checkbox "Applied personal data processing" checked
+     *                         9. We don't check the checkbox "WebSite conditions"
      *                        10. We press "Calculate button"
      * The website should not pass to next step and paint the empty inputs (all types) by red color.
      *
@@ -180,7 +188,6 @@ public class MainPage extends BaseSeleniumPage {
         creaditTerm.sendKeys(String.valueOf(term));
 
         Helpers.wait(1);
-        Helpers.wait(1);
         String clickCheckBox2 = "let elem2 = document.evaluate(\"//*[@id='tab-1']/div[5]/label[2]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem2.click();";
         js.executeScript(clickCheckBox2);
         Helpers.wait(1);
@@ -198,10 +205,34 @@ public class MainPage extends BaseSeleniumPage {
         System.out.printf("calculateBlock = %s", calculateBlock);
     }
 
-    public void checkBoxBothChecks(String username, String phoneNumner, int amount, int term) throws InterruptedException {
+
+    /***
+     * This test will check if WebSite conditions are applied.
+     * The normal behaviour :
+     *                         1. We fill the user's Name and Surname;
+     *                         2. We fill the Phone number
+     *                         3. We choose the purpose of credit
+     *                         4. We choose the currency
+     *                         5. Radiobutton "Personal needs" is checked
+     *                         6. we fill the amount
+     *                         7. We fill the term with credit
+     *                         8. We uncheck the checkbox "Applied personal data processing"
+     *                         9. We check the checkbox "WebSite conditions"
+     *                        10. We press "Calculate button"
+     * The website should not pass to next step and highlight the empty inputs (all types) by red color.
+     *
+     * @param username
+     * @param phoneNumberValue
+     * @param amount
+     * @param term
+     * @throws InterruptedException
+     */
+
+
+    public void checkBoxBothChecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
         Helpers.wait(2);
-        phoneNumber.sendKeys(phoneNumner);
+        phoneNumber.sendKeys(phoneNumberValue);
         Helpers.wait(2);
         creditPurpose.click();
         Helpers.wait(2);
@@ -213,6 +244,29 @@ public class MainPage extends BaseSeleniumPage {
         creaditAmonut.sendKeys(String.valueOf(amount));
         creaditTerm.sendKeys(String.valueOf(term));
 
+        String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
+        js.executeScript(emptyEmountInput);
+        String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
+        js.executeScript((emptyTermIninput));
+        creaditAmonut.sendKeys(String.valueOf(amount));
+        creaditTerm.sendKeys(String.valueOf(term));
+
+        Helpers.wait(1);
+        String clickCheckBox1 = "let elem = document.evaluate(\"//*[@id='tab-1']/div[5]/label[1]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem.click();";
+        js.executeScript(clickCheckBox1);
+        Helpers.wait(1);
+        calculateBtn.click();
+
+        String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
+        String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
+
+
+        if (calculateBlock.equals("false") && mainBlock.equals("true")) {
+            Assert.fail("Personal Data Processing check box should be checked!");
+        }
+
+        System.out.printf("MainBlock = %s", mainBlock);
+        System.out.printf("calculateBlock = %s", calculateBlock);
 
     }
 }
