@@ -14,6 +14,7 @@ public interface ConfigProvider {
     }
 
     String URL = readConfig().getString("url");
+    String CREDIT_CALC_URL = readConfig().getString("creditCalculatorURL");
 //    UserData1---------------------------------
     String USER_NAME_SURNAME_1 = readConfig().getString("creditRequest.userData1.nameSurname");
     String PHONE_NUMBER_1 = readConfig().getString("creditRequest.userData1.phoneNumber");

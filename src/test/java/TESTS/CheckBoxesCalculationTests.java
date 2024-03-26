@@ -1,19 +1,14 @@
 package TESTS;
 
 import Helpers.Helpers;
-import PAGES.MainClassTests;
 import ReadProperties.ConfigProvider;
 import org.junit.Test;
 
 import Core.BaseSeleniumTest;
 import PAGES.MainPage;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 
-//@RunWith(Suite.class)
-//@Suite.SuiteClasses({MITest.class})
-public class MITest extends BaseSeleniumTest {
+public class CheckBoxesCalculationTests extends BaseSeleniumTest {
 
     @DisplayName("Prelucrare Datelor Checkbox Requirement")
     @Test
@@ -32,8 +27,6 @@ public class MITest extends BaseSeleniumTest {
         }
     }
 
-
-
     @DisplayName("Site Conditions Checkbox Requirement")
     @Test
     public void conditionsCheckBoxUnchecked() throws InterruptedException {
@@ -51,13 +44,6 @@ public class MITest extends BaseSeleniumTest {
         }
 
     }
-
-//    @DisplayName("Test red border get")
-//    @Test
-//    public void checkRedBorders(){
-//        MainClassTests test = new MainClassTests();
-//        test.printElemsAttribute();
-//    }
 
     @DisplayName("Both Checkbox Requirement")
     @Test
@@ -92,5 +78,4 @@ public class MITest extends BaseSeleniumTest {
             throw new RuntimeException(e);
         }
     }
-
 }

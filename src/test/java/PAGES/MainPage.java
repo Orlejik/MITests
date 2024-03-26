@@ -2,17 +2,12 @@ package PAGES;
 
 import Helpers.Helpers;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import Core.BaseSeleniumPage;
 import ReadProperties.ConfigProvider;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainPage extends BaseSeleniumPage {
 
@@ -93,11 +88,7 @@ public class MainPage extends BaseSeleniumPage {
      *                        10. We press "Calculate button"
      * The website should not pass to next step and highlight the empty inputs (all types) by red color.
      *
-     * @param username
-     * @param phoneNumberValue
-     * @param amount
-     * @param term
-     * @throws InterruptedException
+
      */
 
     public void checkBoxUserDataUnchecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
@@ -109,7 +100,6 @@ public class MainPage extends BaseSeleniumPage {
         currency.click();
         Helpers.wait(1);
         currencyMLD.click();
-
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
         creaditAmonut.sendKeys(String.valueOf(amount));
@@ -124,10 +114,8 @@ public class MainPage extends BaseSeleniumPage {
         js.executeScript(clickCheckBox2);
         Helpers.wait(1);
         calculateBtn.click();
-
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
         String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
-
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Personal Data Processing check box should be checked!");
@@ -152,11 +140,6 @@ public class MainPage extends BaseSeleniumPage {
      *                        10. We press "Calculate button"
      * The website should not pass to next step and paint the empty inputs (all types) by red color.
      *
-     * @param username
-     * @param phoneNumberValue
-     * @param amount
-     * @param term
-     * @throws InterruptedException
      */
 
     public void checkBoxSiteConditionsUnchecks(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
@@ -178,13 +161,10 @@ public class MainPage extends BaseSeleniumPage {
         String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
         js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
-
         Helpers.wait(1);
         calculateBtn.click();
-
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
         String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
-
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Applying WebSite Conditions check box should be checked!");
@@ -206,15 +186,10 @@ public class MainPage extends BaseSeleniumPage {
      *                         6. we fill the amount
      *                         7. We fill the term with credit
      *                         8. We uncheck the checkbox "Applied personal data processing"
-     *                         9. We check the checkbox "WebSite conditions"
+     *                         9. We don't check the checkbox "WebSite conditions"
      *                        10. We press "Calculate button"
      * The website should not pass to next step and highlight the empty inputs (all types) by red color.
      *
-     * @param username
-     * @param phoneNumberValue
-     * @param amount
-     * @param term
-     * @throws InterruptedException
      */
 
 
@@ -230,23 +205,19 @@ public class MainPage extends BaseSeleniumPage {
         currencyMLD.click();
         creaditAmonut.sendKeys(String.valueOf(amount));
         creaditTerm.sendKeys(String.valueOf(term));
-
         String emptyEmountInput = "let amountInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[1]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; amountInp.value = '';";
         js.executeScript(emptyEmountInput);
         creaditAmonut.sendKeys(String.valueOf(amount));
         String emptyTermIninput = "let termInp = document.evaluate(\"//*[@id='tab-1']/div[4]/div[2]/div/input\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; termInp.value = '';";
         js.executeScript((emptyTermIninput));
         creaditTerm.sendKeys(String.valueOf(term));
-
         Helpers.wait(1);
         String clickCheckBox1 = "let elem = document.evaluate(\"//*[@id='tab-1']/div[5]/label[1]/span\",document, null,XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;elem.click();";
         js.executeScript(clickCheckBox1);
         Helpers.wait(1);
         calculateBtn.click();
-
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
         String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
-
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Both check boxes should be checked!");
@@ -256,6 +227,23 @@ public class MainPage extends BaseSeleniumPage {
         System.out.printf("calculateBlock = %s \n", calculateBlock);
 
     }
+
+    /***
+     * This test will check if WebSite conditions are applied.
+     * The normal behaviour :
+     *                         1. We fill the user's Name and Surname;
+     *                         2. We fill the Phone number
+     *                         3. We choose the purpose of credit
+     *                         4. We choose the currency
+     *                         5. Radiobutton "Personal needs" is checked
+     *                         6. we fill the amount
+     *                         7. We fill the term with credit
+     *                         8. We check the checkbox "Applied personal data processing"
+     *                         9. We check the checkbox "WebSite conditions"
+     *                        10. We press "Calculate button"
+     * The website should pass to next step and highlight the empty inputs (all types) by red color.
+     *
+     */
     public void checkBoxBothChecked(String username, String phoneNumberValue, int amount, int term) throws InterruptedException {
         userName.sendKeys(username);
         phoneNumber.sendKeys(phoneNumberValue);
@@ -278,10 +266,8 @@ public class MainPage extends BaseSeleniumPage {
         js.executeScript(clickCheckBox2);
         Helpers.wait(1);
         calculateBtn.click();
-
         String mainBlock = getElemDisplayCssValue(userDataForCreditBlock, "aria-hidden");
         String calculateBlock = getElemDisplayCssValue(calcualtionBlock, "aria-hidden");
-
 
         if (calculateBlock.equals("true") && mainBlock.equals("false")) {
             Assert.fail("The website should pass to the next step if both checkboxes are checked");
