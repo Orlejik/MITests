@@ -7,6 +7,9 @@ import org.junit.Test;
 import Core.BaseSeleniumTest;
 import PAGES.MainPage;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
 
 public class CheckBoxesCalculationTests extends BaseSeleniumTest {
 

@@ -119,6 +119,8 @@ public class MainPage extends BaseSeleniumPage {
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Personal Data Processing check box should be checked!");
+        }else{
+            Assert.assertTrue(true);
         }
 
         System.out.printf("MainBlock = %s\n", mainBlock);
@@ -168,6 +170,8 @@ public class MainPage extends BaseSeleniumPage {
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Applying WebSite Conditions check box should be checked!");
+        }else{
+            Assert.assertTrue(true);
         }
 
         System.out.printf("MainBlock = %s\n", mainBlock);
@@ -221,6 +225,8 @@ public class MainPage extends BaseSeleniumPage {
 
         if (calculateBlock.equals("false") && mainBlock.equals("true")) {
             Assert.fail("Both check boxes should be checked!");
+        }else{
+            Assert.assertTrue(true);
         }
 
         System.out.printf("MainBlock = %s \n", mainBlock);
@@ -271,6 +277,8 @@ public class MainPage extends BaseSeleniumPage {
 
         if (calculateBlock.equals("true") && mainBlock.equals("false")) {
             Assert.fail("The website should pass to the next step if both checkboxes are checked");
+        }else{
+            Assert.assertTrue(true);
         }
 
         System.out.printf("MainBlock = %s \n", mainBlock);

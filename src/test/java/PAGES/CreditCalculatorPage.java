@@ -44,16 +44,16 @@ public class CreditCalculatorPage extends BaseSeleniumPage {
 }
 
 
-/***
- * TODO :
- *      I. Credit Calculation tests:
-     *      1. To create the tests of changing the Credit scope for ensure that currency is changed dynamically.
-     *      2. To test the range titles after credit scope changed
-     *      3. To test the input of credit amount value <b>in</b> and <b>out</b> of ranges
-     *      4. To test the input of term value <b>in</b> and <b>out</b> of ranges
-     *      5. To test the credit calculation
- *      II. Language tests:
- *          1. To test languages changes
- *          2. To test the "Calculation and Information about credit" link
- *
+/*
+  TODO :
+       I. Credit Calculation tests:
+           1. To create the tests of changing the Credit scope for ensure that currency is changed dynamically.
+           2. To test the range titles after credit scope changed
+           3. To test the input of credit amount value <b>in</b> and <b>out</b> of ranges
+           4. To test the input of term value <b>in</b> and <b>out</b> of ranges
+           5. To test the credit calculation
+       II. Language tests:
+           1. To test languages changes
+           2. To test the "Calculation and Information about credit" link
+
  */
